@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farhan's Special Link</title>
+    <style>
+        /* Love-themed background */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Romantic handwriting style */
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            color: #ff1493;
+        }
+
+        /* Center message */
+        .message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Button styling */
+        .button-with-hearts {
+            display: inline-block;
+            background-color: #ff69b4;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #ff1493;
+            border-radius: 50px;
+            text-decoration: none;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-with-hearts:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+        }
+
+        /* Cutie message */
+        #cutie-message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Message -->
+    <div class="message">Farhan wants to show you something special!</div>
+
+    <!-- Button -->
+    <a href="javascript:void(0);" class="button-with-hearts" id="camera-button">❤️ Click Here ❤️</a>
+
+    <!-- Cutie message -->
+    <div id="cutie-message">Farhan wanted to tell this person is a cutieee potutiiee! 🥰</div>
+
+    <script>
+        document.getElementById('camera-button').addEventListener('click', () => {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    const video = document.createElement('video');
+                    video.srcObject = stream;
+                    video.play();
+                    video.style.width = '100%';
+                    video.style.maxWidth = '400px';
+                    video.style.marginTop = '20px';
+                    video.style.border = '3px solid #ff1493';
+                    video.style.borderRadius = '10px';
+                    document.body.appendChild(video);
+
+                    // Display the cutie message
+                    document.getElementById('cutie-message').style.display = 'block';
+                })
+                .catch(err => {
+                    console.error('Error accessing camera:', err);
+                    alert('Unable to access the camera. Please check your permissions.');
+                });
+        });
+    </script>
+</body>
+</html>
